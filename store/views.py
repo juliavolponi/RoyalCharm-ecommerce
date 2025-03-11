@@ -76,4 +76,8 @@ def checkout(request):
     return render(request, "store/checkout.html")
 
 def payment_success(request):
+    if request.user.is_authenticated:
+        Cart.objects.filter(user=request.user).delete()
+
+        
     return render(request, "store/success.html")
