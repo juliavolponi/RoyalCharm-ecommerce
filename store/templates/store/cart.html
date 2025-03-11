@@ -19,6 +19,13 @@
                         <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="100">
                     {% endif %}
 
+                    <p>
+                        Quantity: {{item.quantity}}
+
+                        <a href="{% url 'update_cart' item.pk 'decrease' %}">➖</a>
+                        <a href="{% url 'update_cart' item.pk 'increase' %}">➕</a>
+                    </p>
+
                     <!-- Remove from Cart Button -->
                     <form action="{% url 'remove_from_cart' item.pk %}" method="post">
                         {% csrf_token %}

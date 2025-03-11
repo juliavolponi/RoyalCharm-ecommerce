@@ -79,5 +79,22 @@ def payment_success(request):
     if request.user.is_authenticated:
         Cart.objects.filter(user=request.user).delete()
 
-        
+
     return render(request, "store/success.html")
+
+
+def update_cart(request, pk, action):
+    cart_item = get_object_or_404(Cart, pk=pk)
+
+    if action == "increase":
+        cart_item.quantity += 1
+        cart_item.save()
+    elif action == "decrease":
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            cart_item.delete()  # If quantity reaches 0, remove from cart
+
+    return redirect('view_cart')
+
