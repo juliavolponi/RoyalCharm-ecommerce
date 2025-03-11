@@ -34,3 +34,11 @@ def view_cart(request):
         cart_items = Cart.objects.filter(user=None)  # Guest users (optional)
 
     return render(request, 'store/cart.html', {'cart_items': cart_items})
+
+def remove_from_cart(request, pk):
+    cart_item = get_object_or_404(Cart, pk=pk)
+
+    if cart_item.user == request.user or cart_item.user is None:
+        cart_item.delete()
+
+    return redirect('view_cart') 
