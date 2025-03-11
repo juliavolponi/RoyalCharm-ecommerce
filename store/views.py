@@ -1,3 +1,5 @@
+import stripe
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Cart
 
@@ -42,3 +44,36 @@ def remove_from_cart(request, pk):
         cart_item.delete()
 
     return redirect('view_cart') 
+
+stripe.api_key = settings.STRIPE_SECRET_KEY  
+
+def checkout(request):
+    if request.method == "POST":
+        cart_items = Cart.objects.filter(user=request.user)
+        total_amount = sum(item.product.price * item.quantity for item in cart_items)
+
+        # Create a Stripe Checkout Session
+        session = stripe.checkout.Session.create(
+            payment_method_types=["card"],
+            line_items=[
+                {
+                    "price_data": {
+                        "currency": "usd",
+                        "product_data": {"name": item.product.name},
+                        "unit_amount": int(item.product.price * 100),
+                    },
+                    "quantity": item.quantity,
+                }
+                for item in cart_items
+            ],
+            mode="payment",
+            success_url="http://127.0.0.1:8000/success/",
+            cancel_url="http://127.0.0.1:8000/cart/",
+        )
+
+        return redirect(session.url)
+
+    return render(request, "store/checkout.html")
+
+def payment_success(request):
+    return render(request, "store/success.html")

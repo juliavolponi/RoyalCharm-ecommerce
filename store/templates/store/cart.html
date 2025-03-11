@@ -28,6 +28,11 @@
                 </li>
             {% endfor %}
         </ul>
+
+        <a href="{% url 'checkout' %}">
+            <button>Proceed to Checkout</button>
+        </a>
+        
     {% else %}
         <p>Your cart is empty.</p>
     {% endif %}
