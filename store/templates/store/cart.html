@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,43 +10,36 @@
 <body>
     <h1>Your Shopping Cart</h1>
 
-    {% if cart_items %}
-        <ul>
+    <div class="cart-container">
+        {% if cart_items %}
             {% for item in cart_items %}
-                <li>
-                    <h3>{{ item.product.name }}</h3>
-                    <p>Quantity: {{ item.quantity }}</p>
-                    <p>Price: ${{ item.product.price }}</p>
-                    {% if item.product.image %}
-                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="100">
-                    {% endif %}
-
-                    <p>
-                        Quantity: {{item.quantity}}
-
-                        <a href="{% url 'update_cart' item.pk 'decrease' %}">➖</a>
-                        <a href="{% url 'update_cart' item.pk 'increase' %}">➕</a>
-                    </p>
-
-                    <!-- Remove from Cart Button -->
+                <div class="cart-item">
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    <div>
+                        <h3>{{ item.product.name }}</h3>
+                        <p>Price: ${{ item.product.price }}</p>
+                        <p>Quantity: {{ item.quantity }}</p>
+                        <div class="cart-buttons">
+                            <a href="{% url 'update_cart' item.pk 'decrease' %}">➖</a>
+                            <a href="{% url 'update_cart' item.pk 'increase' %}">➕</a>
+                        </div>
+                    </div>
                     <form action="{% url 'remove_from_cart' item.pk %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Remove</button>
                     </form>
-
-                </li>
+                </div>
             {% endfor %}
-        </ul>
 
-        <a href="{% url 'checkout' %}">
-            <button>Proceed to Checkout</button>
-        </a>
-        
-    {% else %}
-        <p>Your cart is empty.</p>
-    {% endif %}
+            <a href="{% url 'checkout' %}" class="button">Proceed to Checkout</a>
+
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    </div>
 
     <br>
-    <a href="/">Continue Shopping</a>
+    <a href="/" class="button">Continue Shopping</a>
 </body>
 </html>
+

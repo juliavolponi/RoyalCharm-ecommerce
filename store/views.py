@@ -1,12 +1,16 @@
 import stripe
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Cart
+from .models import Product, Cart, Category
 
 # Create your views here.
 
 def product_list(request):
-    products = Product.objects.all()
+    query = request.GET.get('q')
+    if query:
+        products = Product.objects.filter(name__icontains=query)
+    else:
+        products = Product.objects.all()
     return render(request, 'store/product_list.html', {'products': products})
 
 
@@ -97,4 +101,9 @@ def update_cart(request, pk, action):
             cart_item.delete()  # If quantity reaches 0, remove from cart
 
     return redirect('view_cart')
+
+def category_page(request, category_name):
+    products = Product.objects.filter(category__name=category_name)
+    return render(request, 'store/product_list.html', {'products': products})
+
 
