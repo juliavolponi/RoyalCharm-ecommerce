@@ -15,16 +15,17 @@
         <div class="logo-container">
             <img src="{% static 'store/logo.png' %}" alt="Royal Charm Logo" class="logo">
         </div>
-        <img src="{% static 'store/cover.jpg' %}" alt="Luxury Jewelry" class="cover-image">
-    </header>
-
-    <!-- SEARCH BAR -->
+            <!-- SEARCH BAR -->
     <div class="search-container">
         <form method="GET" action="{% url 'product_list' %}">
             <input type="text" name="q" placeholder="Search for jewelry..." value="{{ request.GET.q }}">
-            <button type="submit">🔍</button>
+            <button type="submit">Search</button>
         </form>
     </div>
+    </header>
+
+    <!-- COVER IMAGE -->
+    <img src="{% static 'store/cover.jpg' %}" alt="Luxury Jewelry" class="cover-image">
 
     <!-- CATEGORIES -->
     <div class="categories">

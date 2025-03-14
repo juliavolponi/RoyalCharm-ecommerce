@@ -10,14 +10,15 @@ body {
 
 /* --- HEADER STYLING --- */
 header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #0a1f44;
     padding: 20px;
 }
 
 .logo {
     width: 180px;
-    margin-bottom: 10px;
 }
 
 .cover-image {
@@ -30,28 +31,42 @@ header {
 
 /* --- SEARCH BAR STYLING --- */
 .search-container {
-    text-align: center;
-    margin: 20px 0;
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.search-container form {
+    display: inline-block;
+    position: relative;
 }
 
 .search-container input {
-    width: 50%;
+    width: 250px;
     padding: 10px;
     border-radius: 25px;
     border: 2px solid #FFD700;
     font-size: 1rem;
     outline: none;
+    background: #ffffff;
+    color: #0a1f44;
+    transition: 0.3s;
+}
+
+.search-container input:focus {
+    border-color: #e6b800;
 }
 
 .search-container button {
     background: #FFD700;
     border: none;
     padding: 10px 20px;
-    margin-left: 5px;
     font-size: 1rem;
     border-radius: 25px;
     cursor: pointer;
     transition: 0.3s;
+    margin-left: 5px;
+    font-weight: bold;
 }
 
 .search-container button:hover {
@@ -140,6 +155,7 @@ a:hover {
     height: auto;
     border-radius: 10px;
     margin-bottom: 15px;
+    object-fit: cover;
 }
 
 .product-card h3 {
