@@ -16,7 +16,7 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             
             <!-- Logo-->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'product_list' %}">
                 <img src="{% static 'store/logo.png' %}" alt="Royal Charm Logo" height="50">
             </a>
     
@@ -40,13 +40,13 @@
     
 
     <!-- Product Listing -->
-    <div class="container">
+    <div class="product-section container">
         <div class="row">
             {% for product in products %}
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow-sm">
                         <a href="{% url 'product_detail' product.pk %}">
-                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                            <img src="{{ product.image.url }}" class="uniform-img" alt="{{ product.name }}">
                         </a>
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ product.name }}</h5>
