@@ -3,7 +3,7 @@
 ### A Django-based eCommerce website for sophisticated, high-end jewelry.
 
 **Royal Charm**  
-[Website](https://royalcharm.herokuapp.com/)
+[Website](https://royalcharm-75e0ee204fe8.herokuapp.com/)
 
 ---
 
