@@ -353,6 +353,50 @@ button, a.button {
     text-align: center;
 }
 
+.register-bg {
+    background-color: #0a1f44; 
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.register-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.form-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3); 
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #0a1f44; 
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0a1f44;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: #e6b800;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
 
 /*  Responsive Fix for Smaller Screens */
 @media (max-width: 992px) {
