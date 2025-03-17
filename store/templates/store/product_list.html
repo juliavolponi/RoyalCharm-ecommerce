@@ -35,6 +35,19 @@
             </form>
     
         </div>
+
+        <!-- Log in-->
+        <div class="d-flex gap-3 auth-buttons">
+            {% if user.is_authenticated %}
+            <form id="logout-form" action="{% url 'logout' %}" method="POST" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-light">Logout</button>
+            </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-light">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-warning">Sign Up</a>
+            {% endif %}
+        </div>
     </nav>
     
     

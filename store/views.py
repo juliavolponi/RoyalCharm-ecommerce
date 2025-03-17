@@ -2,6 +2,8 @@ import stripe
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Cart, Category
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
 # Create your views here.
 
@@ -106,4 +108,14 @@ def category_page(request, category_name):
     products = Product.objects.filter(category__name=category_name)
     return render(request, 'store/product_list.html', {'products': products})
 
-
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # ✅ Log the user in immediately after registration
+            return redirect("product_list")  # ✅ Redirect to homepage
+    else:
+        form = UserCreationForm()
+    
+    return render(request, "store/register.html", {"form": form})

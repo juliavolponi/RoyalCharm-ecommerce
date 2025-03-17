@@ -22,7 +22,7 @@ header {
 }
 
 .navbar {
-    position: relative;
+    position: relative !important;
     width: 100%;
     height: 500px;
     background: url("../store/cover.jpg") center/cover no-repeat;
@@ -318,6 +318,20 @@ button, a.button {
     margin-bottom: 5px;
 }
 
+.product-buttons {
+    display: flex;
+    gap: 15px; /* Adds space between buttons */
+    justify-content: center; /* Center aligns buttons */
+    margin-top: 20px; /* Adds spacing above buttons */
+}
+
+.product-buttons a, .product-buttons button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 /* --- PRICE & DESCRIPTION STYLING --- */
 .price {
     font-size: 1.2rem;
@@ -330,6 +344,13 @@ button, a.button {
     font-size: 0.95rem;
     color: #e0e0e0; /* Light grey */
     margin-bottom: 15px;
+}
+
+/* Registration */
+
+.registration-container {
+    padding: 20px;
+    text-align: center;
 }
 
 
