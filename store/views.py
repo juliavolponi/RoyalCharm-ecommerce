@@ -129,8 +129,14 @@ def update_cart(request, pk, action):
     return redirect("view_cart")
 
 def category_page(request, category_name):
-    products = Product.objects.filter(category__name=category_name)
-    return render(request, 'store/product_list.html', {'products': products})
+    category = Category.objects.filter(name__iexact=category_name).first()
+    
+    if not category:
+        return render(request, 'store/category_page.html', {'error': 'Category not found'})
+
+    products = Product.objects.filter(category=category)
+
+    return render(request, 'store/category_page.html', {'category': category, 'products': products})
 
 def register(request):
     if request.method == "POST":

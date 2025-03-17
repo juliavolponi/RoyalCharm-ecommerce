@@ -1,0 +1,28 @@
+{% extends "store/product_list.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-4">{{ category.name }}</h1>
+
+    {% if products %}
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card shadow-sm">
+                    <a href="{% url 'product_detail' product.pk %}">
+                        <img src="{{ product.image.url }}" class="card-img-top uniform-img" alt="{{ product.name }}">
+                    </a>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">Price: ${{ product.price }}</p>
+                        <a href="{% url 'product_detail' product.pk %}" class="btn btn-warning">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="text-center">No products found in this category.</p>
+    {% endif %}
+</div>
+{% endblock %}
