@@ -74,13 +74,22 @@ This project was built using **Django** for the backend and **Bootstrap** for a 
 - The **navbar is integrated with the cover image**, containing the logo, category buttons, and search bar.
 - **Featured products** are displayed in a visually appealing card layout.
 
+![Homepage screenshot](store/static/images/main.png)
+
+
 ### **Product Listing**
 - Jewelry items are displayed in a grid format with **uniform image sizes**.
 - Clicking a product leads to a **detailed product page** with descriptions and purchasing options.
 
+![Product Detail screenshot](store/static/images/detail.png)
+
 ### **Shopping Cart & Checkout**
 - The cart page follows a **refined layout** with clear quantity controls.
 - Checkout is secure, and the **payment process is simple and intuitive**.
+
+![Cart screenshot](store/static/images/cart.png)
+
+![Checkout screenshot](store/static/images/summary.png)
 
 ### **Color Palette**
 - **Navy Blue (#0a1f44)** - Background and primary elements.
