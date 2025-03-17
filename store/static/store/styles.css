@@ -397,6 +397,33 @@ input:focus {
     box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
+/* ✅ Footer Styles */
+.footer {
+    background: #fff; 
+    color: #0a1f44; 
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1rem;
+}
+
+/* ✅ Social Media Icons */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-link img {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-link img:hover {
+    transform: scale(1.2);
+}
+
+
 
 /*  Responsive Fix for Smaller Screens */
 @media (max-width: 992px) {
