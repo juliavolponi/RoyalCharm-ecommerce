@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -136,6 +140,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 # Stripe API Keys
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "pk_test_51R1YepA1CN0TNXSn9A4tpcCRGKjLNW99jjwCBUSUsmaKSqjBSOlT4iclKZC9uqn2DPgXIvf0pBvZEjPAlc2ygxy500X91F8bKQ")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "sk_test_51R1YepA1CN0TNXSn6mrBix8wq5HwdkKd0zzaDrOalqf8t54dM2hmuWm3Mr3nxLD3sPVcBucYOpQ657fPdzKCHnBb00HY1avDLe")
@@ -143,13 +151,11 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "sk_test_51R1YepA1CN0TNXSn6mr
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-AWS_ACCESS_KEY_ID = "your-access-key"
-AWS_SECRET_ACCESS_KEY = "your-secret-key"
-AWS_STORAGE_BUCKET_NAME = "your-bucket-name"
-AWS_S3_REGION_NAME = "your-region"  # Example: 'us-east-1'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+}
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
