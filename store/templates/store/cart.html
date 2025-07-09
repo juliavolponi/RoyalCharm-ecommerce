@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'store/styles.css' %}">
 </head>
 <body>
+    <div style="min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;">
     <h1>Your Shopping Cart</h1>
 
     <div class="container cart-container">
@@ -56,11 +57,11 @@
         {% else %}
             <p class="text-center">Your cart is empty.</p>
         {% endif %}
+
+        <br>
+        <a href="/" class="button cart-btn">Continue Shopping</a>
     </div>
     
-
-    <br>
-    <a href="/" class="button cart-btn">Continue Shopping</a>
 
     <!-- Footer -->
 <footer class="footer">
@@ -76,6 +77,7 @@
         </div>
     </div>
 </footer>
+    </div>
 </body>
 </html>
 

@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Lora:wght@400;600&display=swap');
 /* --- GENERAL PAGE STYLING --- */
-body {
+html, body {
     font-family: 'Lora', serif; /* Elegant body text */
     background-color: #0a1f44 !important; /* Deep navy blue */
     color: #ffffff; /* White text */
     margin: 0;
-    padding-top: 0;
+    padding: 0;
+    height: 100%;
 }
 
 /* --- HEADER STYLING --- */
@@ -56,50 +57,50 @@ header {
 /* --- SEARCH BAR STYLING --- */
 .search-container {
     display: flex;
+    align-items: center;
     gap: 10px;
-    justify-content: flex-start;
-    margin-top: -10px;
 
 }
 
-.search-container form {
-    display: inline-block;
-    position: relative;
-}
-
+/* Input styling */
 .search-container input {
     width: 200px;
     max-width: 100%;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 25px;
     border: 2px solid #FFD700;
     font-size: 1rem;
     outline: none;
     background: #ffffff;
     color: #0a1f44;
-    transition: 0.3s;
+    transition: border-color 0.3s;
 }
 
+/* On focus, make the border a deeper gold */
 .search-container input:focus {
     border-color: #e6b800;
-    display: flex;
-    gap: 10px;
 }
 
+/* Button styling to match your premium theme */
 .search-container button {
-    background: #FFD700;
+    background: linear-gradient(to right, #d4af37, #f1c40f);
+    color: #0a1f44;
     border: none;
-    padding: 8px 15px;
-    font-size: 0.9rem;
+    padding: 10px 20px;
     border-radius: 25px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-left: 5px;
-    font-weight: bold;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    transition: background 0.3s ease;
 }
 
 .search-container button:hover {
-    background: #e6b800;
+    background: linear-gradient(to right, #f1c40f, #d4af37);
+    color: #fff;
+}
+
+.search-container form {
+    display: inline-block;
+    position: relative;
 }
 
 .search-container .form-control {
@@ -559,11 +560,24 @@ input:focus {
 .footer {
     background: #fff; 
     color: #0a1f44; 
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
-    margin-top: 50px;
+    margin: 0;
     font-size: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
+
+.product-detail-container {
+    min-height: calc(100vh - 120px); /* Adjust 120px to your footer height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px; /* add some breathing room */
+    box-sizing: border-box;
+  }
 
 /* Social Media Icons */
 .social-icons {
