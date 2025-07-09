@@ -10,7 +10,7 @@
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card shadow-sm">
                     <a href="{% url 'product_detail' product.pk %}">
-                        <img src="{{ product.image.url }}" class="card-img-top uniform-img" alt="{{ product.name }}">
+                        <img src="{{ product.image }}" class="card-img-top uniform-img" alt="{{ product.name }}">
                     </a>
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ product.name }}</h5>
